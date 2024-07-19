@@ -24,11 +24,7 @@
                     $hashedNewPassword = password_hash($password, PASSWORD_DEFAULT);
     
                     // Update the password in the database
-<<<<<<< HEAD
                     $updateQuery = mysqli_query($conn, "UPDATE tbl_staff SET password='$hashedNewPassword', password_changed=1 WHERE staff_id='$staff_id'");
-=======
-                    $updateQuery = mysqli_query($conn, "UPDATE tbl_staff SET password='$hashedNewPassword' WHERE staff_id='$staff_id'");
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                     
                     if($updateQuery) {
                         header("Location: ../profile.php?updatePassword=success");

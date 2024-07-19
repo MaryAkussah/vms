@@ -29,23 +29,17 @@
                           <th>DEPARTMENT</th>
                           <th>POSITION - ROLE</th>
                           <th>TIME IN</th>
-<<<<<<< HEAD
                           <th>TIME OUT</th>
                           <th>DATE</th>
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                         </tr>
                       </thead>
                       <?php 
                       $date_today=date('Y-m-d');
                       $time_limit = strtotime('8:30 AM');
-<<<<<<< HEAD
                       $time_limit_str = date('H:i:s', $time_limit);
                       $amber_time = strtotime('9:00 AM');
                       $amber_time_str = date('H:i:s', $amber_time);
                       $closing_time = strtotime('4:30 PM');
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                       $staffAttendace=$conn->query("SELECT * FROM attendance
                       LEFT JOIN tbl_staff ON tbl_staff.staff_id=attendance.staff_id
                       LEFT JOIN department ON department.department_id=tbl_staff.department_id
@@ -64,22 +58,15 @@
                             <td><?= $fetch['department_name']?></td>
                             <td><?= $fetch['staff_role_name']?></td>
                             <td><?php
-<<<<<<< HEAD
                                   if (strtotime($fetch['time_in']) > $amber_time) {
                                       echo "<span class='badge badge-danger'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
                                   }elseif(strtotime($fetch['time_in']) >= $time_limit && strtotime($fetch['time_in']) <= $amber_time) {
                                     echo "<span class='badge badge-warning'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
                                 } else {
-=======
-                                  if (strtotime($fetch['time_in']) > $time_limit) {
-                                      echo "<span class='badge badge-danger'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
-                                  } else {
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                                       echo "<span class='badge badge-success'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
                                   }
                                 ?>
                             </td>
-<<<<<<< HEAD
                             <td><?php
                                   if (strtotime($fetch['time_out']) > $closing_time) {
                                       echo "<span class='badge badge-success'>" . date('g:i A', strtotime($fetch['time_out'])) . "</span>";
@@ -92,8 +79,6 @@
                                 ?>
                             </td>
                             <td><?php echo date('d-m-Y', strtotime($fetch['at_created_at']));?></td>
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                             
                           </tr>
                         <?php endforeach?>

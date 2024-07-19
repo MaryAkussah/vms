@@ -269,7 +269,6 @@ if (!isset($_GET['updateDetails'])) {
    echo "toastr.success('Profile updated successfully')";
  }
 }
-<<<<<<< HEAD
 //insertRequest
 if (!isset($_GET['insertRequest'])) {
              
@@ -409,8 +408,6 @@ if (!isset($_GET['assessment'])) {
       echo "toastr.success('Assessment added successfully');";
   }
 }
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
 
    ?>
   });

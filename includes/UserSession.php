@@ -26,11 +26,7 @@
         $identification = $userData['identification'];
         $username = $userData['username'];
         $visitor_type_name = $userData['visitor_type_name'];
-<<<<<<< HEAD
         // $profile_photo = $userData['profile_photo'];
-=======
-        $profile_photo = $userData['profile_photo'];
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
     } else {
         // User not found, handle the error as needed
         $visitor_email = 'Email not found';

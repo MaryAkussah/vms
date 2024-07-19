@@ -28,7 +28,6 @@
         $username = $userData['username'];
         $staff_email = $userData['staff_email'];
         $profile_photo = $userData['profile_photo'];
-<<<<<<< HEAD
         $department_id = $userData['department_id'];
         $department_name = $userData['department_name'];
         $app_role = $userData['app_role'];
@@ -46,13 +45,3 @@
     // User not found, handle the error as needed
     $user_email = 'Email not found';
 }
-=======
-        $department_name = $userData['department_name'];
-        $staff_role_name = $userData['staff_role_name'];
-        $staff_id = $userData['staff_id'];
-    } else {
-        // User not found, handle the error as needed
-        $user_email = 'Email not found';
-    }
-?>
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e

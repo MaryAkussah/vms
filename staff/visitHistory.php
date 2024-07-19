@@ -36,7 +36,6 @@
                       </thead>
                       <?php 
                       $visitHistory=$conn->query("SELECT * FROM check_in
-<<<<<<< HEAD
                       LEFT JOIN visitors ON visitors.visitor_id = check_in.visitor_id
                       LEFT JOIN tbl_staff ON tbl_staff.staff_id = check_in.staff_id
                       LEFT JOIN status ON status.status_id = check_in.status_id
@@ -47,13 +46,6 @@
                       ) AS team_lead ON check_in.team_id = team_lead.team_id
                       WHERE check_in.staff_id='$staff_id' AND (check_in.team_id IS NULL OR check_in.visitor_id = team_lead.lead_visitor_id)
                       ORDER BY check_in.check_in_id DESC");
-=======
-                      LEFT JOIN visitors ON visitors.visitor_id=check_in.visitor_id
-                      LEFT JOIN tbl_staff ON tbl_staff.staff_id=check_in.staff_id
-                      LEFT JOIN status ON status.status_id=check_in.status_id
-                      WHERE check_in.staff_id='$staff_id'
-                      ORDER BY check_in_id DESC");
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                       $visits=$visitHistory->fetch_all(MYSQLI_ASSOC);
 
                       ?>
@@ -62,7 +54,6 @@
                           <tr>
                             
                             <td><?=$i++;?></td>
-<<<<<<< HEAD
                             <td>
                                 <?php 
                                     echo $fetch['full_name'];
@@ -72,15 +63,11 @@
                                     }
                                 ?>
                             </td>
-=======
-                            <td><?= $fetch['full_name']?></td>
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                             <td><?= $fetch['first_name']?> <?= $fetch['last_name']?></td>
                             <td><?= $fetch['purpose']?></td>
                             <td><?= $fetch['date_in']?></td>
                             <td><?= date('g:i A', strtotime($fetch['time_in']))?></td>
                             <td><?php if(empty($fetch['time_out'])){echo "<strong class='text-danger'><i>Not Set</i></strong>";}else{echo date('g:i A', strtotime($fetch['time_out']));}?></td>
-<<<<<<< HEAD
                             <td><?php if($fetch['status_id']==4){echo "<span  class='badge badge-danger'>".$fetch['status_name']."</span>";}elseif($fetch['status_id']==5){echo "<span class='badge badge-success'>".$fetch['status_name']."</span>";}elseif($fetch['status_id']==6){echo "<span class='badge badge-warning'>".$fetch['status_name']."</span>";} elseif($fetch['status_id']==7){echo "<span class='badge badge-warning'>".$fetch['status_name']."</span>";}?></td>
                           </tr>
 
@@ -102,10 +89,6 @@
                             </div>
                         </div>
 
-=======
-                            <td><?php if($fetch['status_id']==4){echo "<span  class='badge badge-danger'>".$fetch['status_name']."</span>";}elseif($fetch['status_id']==5){echo "<span class='badge badge-success'>".$fetch['status_name']."</span>";}elseif($fetch['status_id']==6){echo "<span class='badge badge-warning'>".$fetch['status_name']."</span>";} elseif($fetch['status_id']==7){echo "<span class='badge badge-warning'>".$fetch['status_name']."</span>";}elseif($fetch['status_id']==8){echo "<span class='badge badge-danger'>".$fetch['status_name']."</span>";}?></td>
-                          </tr>
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                         <?php endforeach?>
                         
                       </tbody>
@@ -121,7 +104,6 @@
             
         </div>
     </div>
-<<<<<<< HEAD
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -206,10 +188,3 @@ function displayTeamMembers(teamMembers) {
 
 <?php include '../includes/footer.php'?>
 </body>
-=======
-</body>
-
-
-<?php include '../includes/footer.php'?>
-    
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e

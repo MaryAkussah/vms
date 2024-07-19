@@ -10,10 +10,7 @@
         LEFT JOIN tbl_staff ON tbl_staff.staff_id=attendance.staff_id
         LEFT JOIN department ON department.department_id=tbl_staff.department_id
         LEFT JOIN staff_role ON staff_role.staff_role_id=tbl_staff.staff_role_id
-<<<<<<< HEAD
         
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                     WHERE attendance.at_created_at >= ? 
                     AND attendance.at_created_at <= ?";
     
@@ -29,11 +26,8 @@
             $query .= " AND attendance.status_id = ?";
             $params[] = $_POST['status_id'];
         }
-<<<<<<< HEAD
 
         $query .= " ORDER BY attendance.at_created_at DESC";
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
     
         // Prepare and execute the SQL query with optional parameters.
         $stmt = $conn->prepare($query);
@@ -102,21 +96,14 @@
                                             <th>DEPARTMENT</th>
                                             <th>POSITION - ROLE</th>
                                             <th>TIME IN</th>
-<<<<<<< HEAD
                                             <th>TIME OUT</th>
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                                             <th>DATE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                     <?php $i=1; foreach ($attendance as $fetch):
-<<<<<<< HEAD
                                         $time_limit = strtotime('8:30 AM');
                                         $amber_time = strtotime('9:00 AM'); ?>
-=======
-                                        $time_limit = strtotime('8:30 AM'); ?>
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                                         <tr>
                                             
                                             <td><?=$i++;?></td>
@@ -126,17 +113,13 @@
                                             <td><?php
                                                     if (strtotime($fetch['time_in']) > $time_limit) {
                                                         echo "<span class='badge badge-danger'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
-<<<<<<< HEAD
                                                     }elseif(strtotime($fetch['time_in']) >= $time_limit && strtotime($fetch['time_in']) <= $amber_time) {
                                                         echo "<span class='badge badge-warning'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
-=======
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                                                     } else {
                                                         echo "<span class='badge badge-success'>" . date('g:i A', strtotime($fetch['time_in'])) . "</span>";
                                                     }
                                                 ?>
                                                 </td>
-<<<<<<< HEAD
                                                 <td><?php
                                                 
                                                     $date_today=date('Y-m-d');
@@ -155,9 +138,6 @@
                                                     ?>
                                                 </td>
                                                  <td><?php echo date('d-m-Y', strtotime($fetch['at_created_at'])); ?></td>
-=======
-                                                <td><?php echo date('d-m-Y', strtotime($fetch['at_created_at'])); ?></td>
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                                             
                                         </tr>
                                            

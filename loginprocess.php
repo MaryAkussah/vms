@@ -39,16 +39,11 @@ if ($checkResult->num_rows === 1) {
 // Verify the entered password against the stored hashed password
 if (password_verify($password, $userData['password'])) {
     // Password is correct, log in the user
-<<<<<<< HEAD
     $defaultpassword=password_hash(123456, PASSWORD_DEFAULT);
     if(password_verify($password, $userData['password'])==$defaultpassword){
         header("location: ");
     }
     // Store user information in the session 
-=======
-
-    // Store user information in the session (you can store more data if needed)
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
     $_SESSION['staff_id'] = $userData['staff_id'];
     $_SESSION['visitor_id'] = $userData['visitor_id'];
     $_SESSION['username'] = $userData['username'];
@@ -56,15 +51,9 @@ if (password_verify($password, $userData['password'])) {
 
     if ($userData['role_id'] == 1) {
         // Redirect the user to their preferred page (e.g., dashboard.php) for admin
-<<<<<<< HEAD
         header("Location: admin/dashboard");
     }elseif($userData['role_id'] == 2){
         header("Location: staff/dashboard");
-=======
-        header("Location: index.php?message=adminsuccess");
-    }elseif($userData['role_id'] == 2){
-        header("Location: index.php?message=staffsuccess");
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
     } else {
         // Redirect the user to their preferred page (e.g., dashboard.php) for non-admin
         header("Location: index.php?message=success");

@@ -37,7 +37,6 @@
                       </thead>
                       <?php 
                       $visitorCheckout=$conn->query("SELECT * FROM check_in
-<<<<<<< HEAD
                       LEFT JOIN visitors ON visitors.visitor_id = check_in.visitor_id
                       LEFT JOIN tbl_staff ON tbl_staff.staff_id = check_in.staff_id
                       LEFT JOIN status ON status.status_id = check_in.status_id
@@ -50,14 +49,6 @@
                       ) AS team_lead ON check_in.team_id = team_lead.team_id
                       WHERE check_in.staff_id='$staff_id' AND check_in.status_id=4 AND (check_in.team_id IS NULL OR check_in.visitor_id = team_lead.lead_visitor_id )
                       ORDER BY check_in.check_in_id DESC");
-=======
-                      LEFT JOIN tbl_staff ON tbl_staff.staff_id=check_in.staff_id
-                      LEFT JOIN visitors ON visitors.visitor_id=check_in.visitor_id
-                      LEFT JOIN staff_role ON staff_role.staff_role_id=tbl_staff.staff_role_id
-                      LEFT JOIN department ON department.department_id=tbl_staff.department_id
-                      LEFT JOIN status ON status.status_id=check_in.status_id
-                      WHERE check_in.staff_id='$staff_id' AND check_in.status_id=4");
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                       $checkout=$visitorCheckout->fetch_all(MYSQLI_ASSOC);
 
                       ?>
@@ -68,7 +59,6 @@
                             <td><?=$i++;?></td>
                             <td><?= $fetch['first_name']?> <?= $fetch['last_name']?></td>
                             <td><?= $fetch['department_name']?></td>
-<<<<<<< HEAD
                             <td>
                                 <?php 
                                     echo $fetch['full_name'];
@@ -78,9 +68,6 @@
                                     }
                                 ?>
                             </td>
-=======
-                            <td><?= $fetch['full_name']?></td>
->>>>>>> d4cbf2a9c05de32fe5bd02bc85e371bc7a160a1e
                             <td><?= $fetch['purpose']?></td>
                             <td><?= $fetch['visitor_phone']?></td>
                             <td><?= date('g:i A', strtotime($fetch['time_in']))?></td>
