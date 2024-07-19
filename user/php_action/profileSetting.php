@@ -1,0 +1,85 @@
+<?php 
+    require_once '../../includes/config.php';
+ 
+    if(isset($_POST['updatePassword'])) {
+        $visitor_id = htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['visitor_id'])));
+        $username = htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['username'])));
+        $oldPassword = htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['oldPassword'])));
+        $password = htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['password'])));
+        $password2 = htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['password2'])));
+    
+        if($password == $password2) {
+            if(empty($password) || empty($password2)) {
+                header("Location: ../profile.php?updatePassword=empty");
+                exit();
+            } else {
+                // Retrieve the hashed password from the database
+                $passwordQuery = mysqli_query($conn, "SELECT password FROM visitors WHERE visitor_id='$visitor_id'");
+                $userData = mysqli_fetch_assoc($passwordQuery);
+                $hashedPassword = $userData['password'];
+    
+                // Verify if the old password matches the hashed password
+                if(password_verify($oldPassword, $hashedPassword)) {
+                    // Hash the new password
+                    $hashedNewPassword = password_hash($password, PASSWORD_DEFAULT);
+    
+                    // Update the password in the database
+                    $updateQuery = mysqli_query($conn, "UPDATE visitors SET password='$hashedNewPassword' WHERE visitor_id='$visitor_id'");
+                    
+                    if($updateQuery) {
+                        header("Location: ../profile.php?updatePassword=success");
+                        exit();
+                    } else {
+                        header("Location: ../profile.php?updatePassword=error");
+                        exit();
+                    }
+                } else {
+                    // Old password does not match
+                    header("Location: ../profile.php?updatePassword=incorrectOldPassword");
+                    exit();
+                }
+            }
+        } else {
+            // Passwords do not match
+            header("Location: ../profile.php?updatePassword=passwordMismatch");
+            exit();
+        }
+    }
+
+    
+    
+
+    if(isset($_POST['updateDetails'])){
+        $visitor_id=htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['visitor_id'])));
+        $full_name=htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['full_name'])));
+        $username=htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['username'])));
+        $visitor_email=htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['visitor_email'])));
+        $visitor_phone=htmlentities(stripslashes(mysqli_real_escape_string($conn, $_POST['visitor_phone'])));
+
+        $type = explode('.', $_FILES['profile_photo']['name']);
+        $type = $type[count($type)-1];		
+        $url = '../../images/profile/'.uniqid(rand()).'.'.$type;
+        if(in_array($type, array('jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'))) {
+            if(is_uploaded_file($_FILES['profile_photo']['tmp_name'])) {			
+                if(move_uploaded_file($_FILES['profile_photo']['tmp_name'], $url)) {
+                    $detailsUpdate=mysqli_query($conn, "UPDATE visitors SET profile_photo='$url', full_name='$full_name', username='$username', visitor_email='$visitor_email', visitor_phone='$visitor_phone' WHERE visitor_id='$visitor_id'")or die(mysqli_error($conn));
+                    if($detailsUpdate){
+                        header("Location: ../profile.php?updateDetails=success");
+                        exit();
+                    }else{
+                        header("Location: ../profile.php?updateDetails=error");
+                        exit();
+                    }
+                }else{
+                    header("Location: ../profile.php?updateDetails=movederror");
+                    exit();
+                }
+            }else{
+                header("Location: ../profile.php?updateDetails=notuploaded");
+                exit();
+            }
+        }else{
+            header("Location: ../profile.php?updateDetails=fileformat");
+            exit();
+        }
+    }

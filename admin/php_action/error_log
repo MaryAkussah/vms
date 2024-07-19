@@ -1,0 +1,2 @@
+[11-Mar-2024 17:39:03 Africa/Accra] PHP Notice:  Undefined variable: attendance_id in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/admin/php_action/updateAttendance.php on line 15
+[11-Mar-2024 17:39:43 Africa/Accra] PHP Notice:  Undefined variable: attendance_id in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/admin/php_action/updateAttendance.php on line 15

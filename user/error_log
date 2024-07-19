@@ -1,0 +1,6 @@
+[09-Mar-2024 19:54:42 Africa/Accra] PHP Notice:  Undefined index: profile_photo in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/includes/UserSession.php on line 29
+[09-Mar-2024 19:54:55 Africa/Accra] PHP Notice:  Undefined index: profile_photo in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/includes/UserSession.php on line 29
+[09-Mar-2024 19:55:02 Africa/Accra] PHP Notice:  Undefined index: profile_photo in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/includes/UserSession.php on line 29
+[09-Mar-2024 19:55:39 Africa/Accra] PHP Notice:  Undefined index: profile_photo in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/includes/UserSession.php on line 29
+[09-Mar-2024 19:56:08 Africa/Accra] PHP Notice:  Undefined index: profile_photo in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/includes/UserSession.php on line 29
+[09-Mar-2024 19:56:08 Africa/Accra] PHP Notice:  Undefined variable: staff_id in /home/wgtechin/public_html/vms.wgtechinnovationhub.com/user/profile.php on line 154
